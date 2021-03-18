@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { useBysykkelStatus } from "../api/bysykkelStatus";
 import React from "react";
 import { StationInformation } from "../api/bysykkelInformation";
@@ -12,6 +12,12 @@ const Style = styled.li`
   &:nth-child(even) {
       background-color: hsl(0, 0%, 0%, 0.2);
   }
+`;
+
+const Attention = styled.div<{attention: boolean}>`
+    ${props => props.attention && css`
+      background-color: red;
+    `}
 `;
 
 function Status(props: { id: string }) {
@@ -32,10 +38,12 @@ function Status(props: { id: string }) {
     return <div>Ugyldig id på bysykkelstativ</div>;
   }
 
+  const availableBikes = currentStationStatus.num_bikes_available;
+  const availableDocks = currentStationStatus.num_docks_available;
   return (
     <>
-      <div>🚲 Sykler: {currentStationStatus.num_bikes_available}</div>
-      <div>🔒 Plasser: {currentStationStatus.num_docks_available}</div>
+      <Attention attention={availableBikes === 0}>🚴‍♂️ Sykler: {availableBikes}</Attention>
+      <Attention attention={availableDocks === 0}>🔒 Plasser: {availableDocks}</Attention>
     </>
   );
 }
