@@ -2,16 +2,17 @@ import { createGlobalStyle } from "styled-components/macro";
 
 export const GlobalStyle = createGlobalStyle`
   html {
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 112.5%;
     @media (min-width: 1000px) {
       font-size: 125%;
     }
-    color: #ddd;
+    color: #fff;
     background-color: #111;
   }
   
   body {
-    background-color: #181818;
+    background-color: hsl(212deg 100% 39%);
     min-height: 100vh;
   }
 
