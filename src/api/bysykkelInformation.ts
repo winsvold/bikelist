@@ -16,6 +16,6 @@ export interface StationInformation {
   station_id: string;
 }
 
-const url = "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json";
+export const stationInformationUrl = "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json";
 
-export const useBysykkelInformation = () => useSWR<BysykkelInformation>(url, bysykkelFetcher);
+export const useBysykkelInformation = () => useSWR<BysykkelInformation>(stationInformationUrl, bysykkelFetcher);

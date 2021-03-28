@@ -17,6 +17,6 @@ export interface StationStatus {
   station_id: string;
 }
 
-const url = "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json";
+export const stationStatusUrl = "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json";
 
-export const useBysykkelStatus = () => useSWR<BysykkelStatus>(url, bysykkelFetcher, {refreshInterval: 30000});
+export const useBysykkelStatus = () => useSWR<BysykkelStatus>(stationStatusUrl, bysykkelFetcher, {refreshInterval: 30000});

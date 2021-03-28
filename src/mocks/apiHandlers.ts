@@ -1,12 +1,14 @@
 import { rest } from "msw";
 import { stationInformationMockData } from "./stationInformationMockData";
 import { stationStatusMockData } from "./stationStatusMockData";
+import { stationInformationUrl } from "../api/bysykkelInformation";
+import { stationStatusUrl } from "../api/bysykkelStatus";
 
 export const apiMockHandlers = [
-  rest.get('https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json', async (req, res, ctx) => {
+  rest.get(stationInformationUrl, async (req, res, ctx) => {
     return res(ctx.json(stationInformationMockData))
   }),
-  rest.get('https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json', async (req, res, ctx) => {
+  rest.get(stationStatusUrl, async (req, res, ctx) => {
     return res(ctx.json(stationStatusMockData))
   }),
 ]
