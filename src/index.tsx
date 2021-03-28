@@ -5,7 +5,7 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 import { ResetCSS } from "./styles/reset.css";
 import { testWorker } from "./mocks/browser";
 
-process.env.NODE_ENV === "development" && testWorker.start();
+process.env.REACT_APP_MOCK_DATA && testWorker.start();
 
 ReactDOM.render(
   <React.StrictMode>
