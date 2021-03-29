@@ -3,7 +3,7 @@ import { useBysykkelStatus } from "../api/bysykkelStatus";
 import React from "react";
 import { StationInformation } from "../api/bysykkelInformation";
 
-const Style = styled.li`
+const Style = styled.div`
   padding: 1rem;
 
   > *:not(:last-child) {
@@ -17,6 +17,7 @@ const Style = styled.li`
 const Attention = styled.div<{attention: boolean}>`
     ${props => props.attention && css`
       background-color: red;
+      color: white;
     `}
 `;
 

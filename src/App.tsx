@@ -3,13 +3,18 @@ import styled from "styled-components/macro";
 import Station from "./components/Station";
 import { useBysykkelInformation } from "./api/bysykkelInformation";
 import Input from "./components/Input";
+import Map from './components/Map';
 
 const Style = styled.div`
-  padding: 4rem;
+  padding: 4rem 1rem;
   display: flex;
   flex-direction: column;
-  max-width: 30rem;
-  margin: auto;
+  > * {
+    width: 25rem;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const H1 = styled.h1`
@@ -40,10 +45,11 @@ function App() {
     <Style>
       <H1>Bysykler i Oslo</H1>
       <StyledInput id="Søk" value={søk} setValue={setSøk} label="Søk etter bysyskkelstativ" />
+      <Map stations={matches} />
       {!matches.length
         ? <div>Fant ingen stasjoner på søket ditt</div>
         : <ul>
-          {matches.map(station => <Station {...station} key={station.station_id} />)}
+          {matches.map(station => <li key={station.station_id}><Station {...station} /></li>)}
         </ul>
       }
     </Style>
