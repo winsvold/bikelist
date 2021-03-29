@@ -25,6 +25,12 @@ const StyledInput = styled(Input)`
   margin-bottom: 2rem;
 `;
 
+const StyledUl = styled.ul`
+  > *:nth-child(even) {
+    background-color: hsl(0, 0%, 0%, 0.2);
+  }
+`;
+
 function App() {
   const { data: response, error } = useBysykkelInformation();
   const [søk, setSøk] = useState("");
@@ -48,9 +54,9 @@ function App() {
       <Map stations={matches} />
       {!matches.length
         ? <div>Fant ingen stasjoner på søket ditt</div>
-        : <ul>
+        : <StyledUl>
           {matches.map(station => <li key={station.station_id}><Station {...station} /></li>)}
-        </ul>
+        </StyledUl>
       }
     </Style>
   );

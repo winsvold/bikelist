@@ -9,9 +9,6 @@ const Style = styled.div`
   > *:not(:last-child) {
     margin-bottom: .3rem;
   }
-  &:nth-child(even) {
-      background-color: hsl(0, 0%, 0%, 0.2);
-  }
 `;
 
 const Attention = styled.div<{attention: boolean}>`
